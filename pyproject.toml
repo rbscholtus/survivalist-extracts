@@ -30,12 +30,6 @@ types-xmltodict = "^0.13.0.3"
 types-pyyaml = "^6.0.12.12"
 types-toml = "^0.10.8.7"
 
-
-[[tool.poetry.source]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-priority = "supplemental"
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -89,7 +83,7 @@ target-version = "py312"
 # Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
 # McCabe complexity (`C901`) by default.
 select = ["ALL"]
-ignore = ["ANN101", "C901", "D", "PLR0912", "PLR0913", "PLR0915"]
+ignore = ["ANN101", "C901", "PLR0912", "PLR0913", "PLR0915"]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
