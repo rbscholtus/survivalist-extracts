@@ -1,0 +1,102 @@
+[tool.poetry]
+name = "survivalist-gamedata"
+version = "1.0.0"
+description = "Utility for extracting information about Survivalist: Invisible Strain from the game's XML files and saving it in CSV and Steam Community markup formats."
+authors = ["Barend Scholtus <barend.scholtus@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "survivalist_gamedata" }]
+license = "Apache-2.0"
+repository = "https://github.com/rbscholtus/survivalist-gamedata"
+include = ["pyproject.toml"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Markup :: XML",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+xmltodict = "^0.13.0"
+attrdict = "^2.0.1"
+confuse = "^2.0.1"
+toml = "^0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+types-xmltodict = "^0.13.0.3"
+types-pyyaml = "^6.0.12.12"
+types-toml = "^0.10.8.7"
+
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+survivalist-gamedata = "survivalist_gamedata.__main__:run"
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 90
+CONTINUATION_ALIGN_STYLE = "space" # space, fixed, valign-right
+CONTINUATION_INDENT_WIDTH = 4
+
+[tool.mypy]
+strict = false
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+line-length = 90
+indent-width = 4
+
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["ALL"]
+ignore = ["ANN101", "C901", "D", "PLR0912", "PLR0913", "PLR0915"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"

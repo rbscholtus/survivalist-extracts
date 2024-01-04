@@ -1,0 +1,271 @@
+base_dir: C:/Program Files (x86)/Steam/steamapps/common/Survivalist Invisible Strain/Survivalist Invisible Strain_Data/StreamingAssets/
+version_file: BaseStory/Version.txt
+gamedata_dirs:
+  - BaseStory
+  - Common
+  - Sandbox
+  - MainStory
+
+replacements:
+  "Fl Oz": "FlOz"
+  "Sharp Object": "Sharp"
+  "Blunt Object": "Blunt"
+  "4:Clothing/": ""
+  "5:Food/": ""
+  "Common at": "[u]Common[/u] at"
+  "Uncommon at": "[u]Uncommon[/u] at"
+  "Very Rare at": "[u]Very Rare[/u] at"
+  "Rare at": "[u]Rare[/u] at"
+  "Legendary at": "[u]Legendary[/u] at"
+
+recipes:
+  skip_deprecated: true
+  order_by: SkillType RecipeType SkillLevel UniqueID
+  csv_file: "data/{version}/Recipes.csv"
+  csv_fields:
+    - UniqueID
+    - NativeName
+    - SkillType
+    - SkillLevel
+    - RecipeType
+    - CraftingStationType
+    - CraftingTime
+    - Ingredients
+    - Product
+    # ProductPrototypeName"
+    # ProductAmount"
+    # ProductLiquidPrototypeName
+    # ProductLiquidAmount
+    - ProductLiquidNutritionMultiplier
+    - SkillProgression
+    # ProductType
+    - OnlyUseManually
+    - Deprecated
+    - ShowRecipe
+    # Interchangeable"
+  steam_file: "data/{version}/Recipes.txt"
+  steam_tables:
+    default_columns:
+      UniqueID: Recipe
+      SkillLevel: Skill Level
+      Ingredients: Ingredients
+      CraftingTime: Crafting Time (s)
+      Product: Product
+      SkillProgression: Skill Progr
+    tables:
+      - SkillType: Cooking
+        columns:
+          UniqueID: Recipe
+          SkillLevel: Cooking Skill Level
+          RecipeType: Station
+          Ingredients: Ingredients
+          CraftingTime: Crafting Time (s)
+          Product: Product
+          ProductLiquidNutritionMultiplier: Liquid Nutrition Multiplier
+          SkillProgression: Skill Progr
+      - SkillType: Construction
+        RecipeType: Inventory
+      - SkillType: Construction
+        RecipeType: Toolbox
+      - SkillType: Construction
+        RecipeType: Shovel
+      - SkillType: Construction
+        RecipeType: Workbench
+      - SkillType: Construction
+        RecipeType: Forge
+      - SkillType: Construction
+        RecipeType: Kiln
+      - SkillType: Construction
+        RecipeType: Nitrary
+      - SkillType: Construction
+        RecipeType: Still
+      - SkillType: Medicine
+        columns:
+          UniqueID: Recipe
+          SkillLevel: Medicine Skill Level
+          Ingredients: Ingredients
+          CraftingTime: Crafting Time (s)
+          Product: Product
+          SkillProgression: Skill Progr
+
+game_items:
+  skip_files:
+    # duplicated helmet
+    - Helmet8.xml
+    # duplicated
+    - BrokenSatellitePhone.xml
+    # duplicated, seems to specify loot Scarcity incorrect
+    - AssaultRifle2.xml
+  csv_file: "data/{version}/Items.csv"
+  remove_keys:
+    - "@xmlns:xsd"
+    - "@xmlns:xsi"
+    - NativeDescription
+    - Scarcity
+    - LootableFromLocations
+    - MinAimTime
+    - MaxAimTime
+    - MinHeadAimTime
+    - MaxHeadAimTime
+    - MinLegsAimTime
+    - MaxLegsAimTime
+    - ReloadReleaseSounds
+    - ReloadInsertSounds
+    - ReloadSlideSounds
+    - ColorVariations
+    - ColorVariations2
+    - ColorVariations3
+    - Col
+    - MaterialVariations
+    - MaleMeshName
+    - FemaleMeshName
+    - ProjectileHitSounds
+    - HitEffectName
+    - EquippedModelName
+  steam_file: "data/{version}/Items.txt"
+  steam_tables:
+    default_columns:
+      NativeName: Name
+      Weight: Weight (lbs)
+      BasePrice: Base Price (gold)
+      LootLocations: Loot Locations
+    tables:
+      - Category: 2:Weapons/Ammo
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          DamageModifier: Damage Modifier
+          ArmorPiercing: Armor Piercing
+          TypicalLootAmount: Typical Loot Amount
+          LootLocations: Loot Locations
+      - Category: 2:Weapons/Melee
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          InjuryType: Injury Type
+          Range: Range
+          Damage: Damage
+          # DamageBonusPerSkillLevel
+          FatiguePenaltyWhenAttacking: Fatigue Penalty
+          # LootLocations: Loot Locations
+      - Category: 2:Weapons/Ranged
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          MaxAmmo: Max Ammo
+          Damage: Damage
+          # DamageBonusPerSkillLevel
+          Range: Range
+          # RangeBonusPerSkillLevel
+          AccurateRange: Accurate Range
+          # AccurateRangeBonusPerSkillLevel
+          # LootLocations
+          # Recoil
+          AttackSoundRadius: Attack Sound Radius
+          MinTimeBetweenFiring: Min Time Between Firing
+      - Category: 2:Weapons/Throwable
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          Damage: Damage
+          DamageRadius: Damage Radius
+          Range: Range
+          # RangeBonusPerSkillLevel
+          AccurateRange: Accurate Range
+          # AccurateRangeBonusPerSkillLevel
+          LootLocations: Loot Locations
+      - Category: 3:Medical
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          TypicalLootAmount: Typical Loot Amount
+          LootLocations: Loot Locations
+      - Category: 4:Clothing
+        columns:
+          NativeName: Name
+          Category: Category
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          Insulation: Insulation
+          DamageAbsorption: Damage Absorption
+          # SkillBonusType
+          SkillBonus: Skill Bonus
+          SightRangeModifier: Sight Bonus
+          # LootLocations: Loot Locations
+      - Category: 4:Backpacks
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          CarryWeight: Carry Weight (lbs)
+          # CarryWeightBonusPerSkillLevel
+          # SkillBonusType
+          SkillBonus: Skill Bonus
+          LootLocations: Loot Locations
+      - Category: 5:Food
+        columns:
+          NativeName: Name
+          Category: Category
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          # BasePricePerFlOz
+          Nutrition: Nutrition
+          # NutritionPerFlOz
+          Tastiness: Tastiness
+          SkillOnConsumption: Skill On Consumption
+          # SkillOnConsumptionType
+          # SkillOnConsumptionProgression
+          # SkillOnConsumptionProgressionPerFlOz
+          # TypicalLootAmount
+          # LootLocations: Loot Locations
+      - Category: 5:Seeds
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          # LootLocations: Loot Locations
+      - Category: 6:Crafting
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          # BasePricePerFlOz
+          TypicalLootAmount: Typical Loot Amount
+          LootLocations: Loot Locations
+          # SkillOnConsumptionProgressionPerFlOz
+          # SkillOnConsumptionType
+          # NutritionPerFlOz
+          # Tastiness
+      - Category: 7:Containers
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          LiquidCapacity: Liquid Capacity (FlOz)
+          # TypicalLootAmount
+          # LootLocations: Loot Locations
+      - Category: 8:Books
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          # SkillBonusType
+          SkillBonus: Skill Bonus
+          # LootLocations: Loot Locations
+      - Category: 1:Valuables
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          LootLocations: Loot Locations
+      - Category: 9:Special
+        columns:
+          NativeName: Name
+          Weight: Weight (lbs)
+          BasePrice: Base Price (gold)
+          LootLocations: Loot Locations

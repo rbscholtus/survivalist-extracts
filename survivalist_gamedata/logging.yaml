@@ -1,0 +1,21 @@
+version: 1
+handlers:
+  console:
+    class: logging.StreamHandler
+    #formatter: brief
+    level: INFO
+    #filters: [allow_foo]
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    #formatter: precise
+    filename: debug.log
+    maxBytes: 1048576
+    backupCount: 9
+loggers:
+  survivalist_gamedata:
+    handlers: [console, file]
+    level: DEBUG
+root:
+  level: DEBUG
