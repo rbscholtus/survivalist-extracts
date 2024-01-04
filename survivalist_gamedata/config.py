@@ -75,10 +75,10 @@ def _init_conf() -> confuse.templates.AttrDict:
     desc = pyprj['tool']['poetry']['description']
 
     # Get arguments from the command line.
-    argp = argparse.ArgumentParser(description=(f'Survivalist Extracts - {desc}'))
+    argp = argparse.ArgumentParser(description=(f'Survivalist Gamedata - {desc}'))
     argp.add_argument('--version',
                       action='version',
-                      version=f'Survivalist Extracts {version}')
+                      version=f'Survivalist Gamedata {version}')
     argp.add_argument(
         '--dump-config',
         dest='dump_config',
